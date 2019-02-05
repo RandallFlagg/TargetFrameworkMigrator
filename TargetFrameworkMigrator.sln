@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TargetFrameworkMigrator_Int
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TargetFrameworkMigrator_UnitTests", "TargetFrameworkMigrator\TargetFrameworkMigrator_UnitTests\TargetFrameworkMigrator_UnitTests.csproj", "{79F8DBB8-E7C4-4899-A3BA-753BDB952BB5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateVersion", "UpdateVersion\UpdateVersion.csproj", "{0AB9F266-49A6-4CB9-A3DC-C7A5734F7BB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,8 +69,23 @@ Global
 		{79F8DBB8-E7C4-4899-A3BA-753BDB952BB5}.Release|X64.ActiveCfg = Release|Any CPU
 		{79F8DBB8-E7C4-4899-A3BA-753BDB952BB5}.Release|x86.ActiveCfg = Release|x86
 		{79F8DBB8-E7C4-4899-A3BA-753BDB952BB5}.Release|x86.Build.0 = Release|x86
+		{0AB9F266-49A6-4CB9-A3DC-C7A5734F7BB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AB9F266-49A6-4CB9-A3DC-C7A5734F7BB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AB9F266-49A6-4CB9-A3DC-C7A5734F7BB4}.Debug|X64.ActiveCfg = Debug|Any CPU
+		{0AB9F266-49A6-4CB9-A3DC-C7A5734F7BB4}.Debug|X64.Build.0 = Debug|Any CPU
+		{0AB9F266-49A6-4CB9-A3DC-C7A5734F7BB4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0AB9F266-49A6-4CB9-A3DC-C7A5734F7BB4}.Debug|x86.Build.0 = Debug|Any CPU
+		{0AB9F266-49A6-4CB9-A3DC-C7A5734F7BB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AB9F266-49A6-4CB9-A3DC-C7A5734F7BB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AB9F266-49A6-4CB9-A3DC-C7A5734F7BB4}.Release|X64.ActiveCfg = Release|Any CPU
+		{0AB9F266-49A6-4CB9-A3DC-C7A5734F7BB4}.Release|X64.Build.0 = Release|Any CPU
+		{0AB9F266-49A6-4CB9-A3DC-C7A5734F7BB4}.Release|x86.ActiveCfg = Release|Any CPU
+		{0AB9F266-49A6-4CB9-A3DC-C7A5734F7BB4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5FC973D2-0E03-40F8-A18A-1664243812C8}
 	EndGlobalSection
 EndGlobal

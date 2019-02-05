@@ -3,8 +3,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace VSChangeTargetFrameworkExtension
 {
@@ -130,9 +134,98 @@ namespace VSChangeTargetFrameworkExtension
                 onReloadFired.Invoke();
         }
 
+        private void AddDotNetVersion(string version)
+        {
+            var digits = version.Split('.').ToList();
+            if (digits.Count == 3)
+            {
+                var tmp = digits[1];
+                digits[1] = digits[2];
+                digits[2] = tmp;
+            }
+            else
+            {
+                digits.Insert(1, "");
+            }
+
+            var hexValue = string.Empty;
+            foreach (var digit in digits)
+            {
+                hexValue += digit.PadLeft(2, '0');
+            }
+            int versionId = int.Parse(hexValue, System.Globalization.NumberStyles.HexNumber);
+            UpdateXML(versionId, version);
+        }
+
+        private void UpdateXML(int versionId, string version)
+        {
+            UpdateXML(versionId.ToString(), version);
+        }
+
+        private void UpdateXML(string versionId, string version)
+        {
+            var filePath = GetFrameworksXmlFilePath();
+            var doc = XDocument.Load(filePath);
+            var frameworkNodes = doc.Root.Elements("Framework");
+            bool exists = false;
+            foreach (var node in frameworkNodes)
+            {
+                if (node.Attribute("Id").Value == versionId)
+                {
+                    exists = true;
+                    break;
+                }
+            }
+
+            if (!exists)
+            {
+                var elem = new XElement("Framework", new XAttribute("Id", versionId), new XAttribute("Name", $".NETFramework,Version=v{version}"));
+                doc.Descendants("Frameworks").FirstOrDefault().Add(elem);
+                doc.Save(filePath);
+            }
+        }
+
+        private string GetFrameworksXmlFilePath()
+        {
+            var folderPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            return Path.Combine(folderPath, "Frameworks.xml");
+        }
+
+        private bool ValidateVersion(string version)
+        {
+            var result = true;
+            if (!string.IsNullOrWhiteSpace(version.Trim()))
+            {
+                result = false;
+                var digits = version.Split('.');
+                if (digits.Length <= 3 && digits.Length >= 2)
+                {
+                    foreach (var digit in digits)
+                    {
+                        result = byte.TryParse(digit, out byte value);
+                        if (!result)
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
         private void btnAddDotNetVersion_Click(object sender, EventArgs e)
         {
-            //int decAgain = int.Parse(hexValue, System.Globalization.NumberStyles.HexNumber);
+            AddDotNetVersion(tbAddDotNetVersion.Text);
+        }
+
+        private void tbAddDotNetVersion_Leave(object sender, EventArgs e)
+        {
+            var tb = sender as TextBox;
+            if (!ValidateVersion(tb.Text))
+            {
+                toolTip1.ToolTipTitle = "Input Rejected";
+                toolTip1.Show("You can only add numeric characters (0-9) into this field.", tb, 0, -20, 5000);
+            }
         }
     }
 }

@@ -17,8 +17,9 @@ using System.ComponentModel.Design;
 using Microsoft.VsSDK.UnitTestLibrary;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.VisualStudio.Shell;
+//using Microsoft.VisualStudio.Shell;
 using VHQLabs.TargetFrameworkMigrator;
+using Microsoft.VisualStudio.Shell;
 
 namespace TargetFrameworkMigrator_UnitTests.MenuItemTests
 {

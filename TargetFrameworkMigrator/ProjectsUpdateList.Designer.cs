@@ -28,6 +28,7 @@
     /// </summary>
     private void InitializeComponent()
     {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectsUpdateList));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Update = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -40,6 +41,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.reloadButton = new System.Windows.Forms.Button();
             this.btnAddDotNetVersion = new System.Windows.Forms.Button();
+            this.tbAddDotNetVersion = new System.Windows.Forms.TextBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,7 +90,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(12, 12);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(415, 21);
+            this.comboBox1.Size = new System.Drawing.Size(307, 21);
             this.comboBox1.TabIndex = 1;
             // 
             // button1
@@ -112,7 +115,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(433, 10);
+            this.button3.Location = new System.Drawing.Point(325, 10);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(76, 52);
             this.button3.TabIndex = 4;
@@ -123,10 +126,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(408, 13);
+            this.label1.Location = new System.Drawing.Point(527, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 5;
+            this.label1.Text = "state";
             // 
             // reloadButton
             // 
@@ -140,7 +144,7 @@
             // 
             // btnAddDotNetVersion
             // 
-            this.btnAddDotNetVersion.Location = new System.Drawing.Point(325, 39);
+            this.btnAddDotNetVersion.Location = new System.Drawing.Point(407, 39);
             this.btnAddDotNetVersion.Name = "btnAddDotNetVersion";
             this.btnAddDotNetVersion.Size = new System.Drawing.Size(102, 23);
             this.btnAddDotNetVersion.TabIndex = 7;
@@ -148,11 +152,20 @@
             this.btnAddDotNetVersion.UseVisualStyleBackColor = true;
             this.btnAddDotNetVersion.Click += new System.EventHandler(this.btnAddDotNetVersion_Click);
             // 
+            // tbAddDotNetVersion
+            // 
+            this.tbAddDotNetVersion.Location = new System.Drawing.Point(408, 10);
+            this.tbAddDotNetVersion.Name = "tbAddDotNetVersion";
+            this.tbAddDotNetVersion.Size = new System.Drawing.Size(100, 20);
+            this.tbAddDotNetVersion.TabIndex = 8;
+            this.tbAddDotNetVersion.Leave += new System.EventHandler(this.tbAddDotNetVersion_Leave);
+            // 
             // ProjectsUpdateList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(690, 366);
+            this.Controls.Add(this.tbAddDotNetVersion);
             this.Controls.Add(this.btnAddDotNetVersion);
             this.Controls.Add(this.reloadButton);
             this.Controls.Add(this.label1);
@@ -183,5 +196,7 @@
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Button reloadButton;
         private System.Windows.Forms.Button btnAddDotNetVersion;
+        private System.Windows.Forms.TextBox tbAddDotNetVersion;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
